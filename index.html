@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="normalize.css">
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js"></script>
+        <link rel="shortcut icon" href="icon.png" type="image/x-icon">
+        <title>Бесконечный супрематический тайм-лапс</title>
+    </head>
+    <body onload="document.documentElement.scrollTop = 0; playAnim()">
+        <div id="main-panel">
+            <div class="control-panel">
+                <div class="tooltip tt_slider">
+                    <input type="range" id="nob" min="10" max="80" oninput="changenob()" value="10">
+                    <span class="tooltiptext">Количество фрагментов</span>
+                </div>
+                <div class="tooltip tt_slider">
+                    <input type="range" id="nomb" min="0" max="10" value="5">
+                    <span class="tooltiptext">Максимальное количество подвижных фрагментов</span>
+                </div>
+                <div class="tooltip tt_slider">
+                    <input type="range" id="sob" min="1" max="10" value="2">
+                    <span class="tooltiptext">Максимальная скорость фрагмента</span>
+                </div>
+                    <div class="tooltip tt_slider">
+                    <input type="range" id="szob" min="0" max="10" value="2">
+                    <span class="tooltiptext">Максимальный размер фрагмента</span>
+                </div>
+                <div class="tooltip tt_cchoser"> 
+                    <div style="display: inline-block;">
+                        <input type="checkbox" class="color_choice cff8080" id="cc_ff8080" value="255, 128, 128" onclick="check('color_choice')">
+                        <label for="cc_ff8080"></label>
+                        <input type="checkbox" class="color_choice cffbf80" id="cc_ffbf80" value="255, 191, 128" onclick="check('color_choice')">
+                        <label for="cc_ffbf80"></label>
+                        <input type="checkbox" class="color_choice cffff80" id="cc_ffff80" value="255, 255, 128" onclick="check('color_choice')">
+                        <label for="cc_ffff80"></label>
+                        <input type="checkbox" class="color_choice c80ff80" id="cc_80ff80" value="128, 255, 128" onclick="check('color_choice')">
+                        <label for="cc_80ff80"></label>
+                        <input type="checkbox" class="color_choice cb3e0ff" id="cc_b3e0ff" value="179, 224, 255" onclick="check('color_choice')">
+                        <label for="cc_b3e0ff"></label>
+                        <input type="checkbox" class="color_choice c8093ff" id="cc_8093ff" value="128, 147, 255" onclick="check('color_choice')">
+                        <label for="cc_8093ff"></label>
+                        <input type="checkbox" class="color_choice cc94dff" id="cc_c94dff" value="201, 77, 255" onclick="check('color_choice')">
+                        <label for="cc_c94dff"></label>
+                        <input type="checkbox" class="color_choice cffffff" id="cc_ffffff" value="255, 255, 255" onclick="check('color_choice')" checked>
+                        <label for="cc_ffffff"></label>
+                        <input type="checkbox" class="color_choice c4d4d4d" id="cc_4d4d4d" value="77, 77, 77" onclick="check('color_choice')">
+                        <label for="cc_4d4d4d"></label>
+                        <input type="checkbox" class="color_choice cff0000" id="cc_ff0000" value="255, 0, 0" onclick="check('color_choice')">
+                        <label for="cc_ff0000"></label>
+                        <input type="checkbox" class="color_choice cff7f00" id="cc_ff7f00" value="255, 127, 0" onclick="check('color_choice')">
+                        <label for="cc_ff7f00"></label>
+                        <input type="checkbox" class="color_choice cffff00" id="cc_ffff00" value="255, 255, 0" onclick="check('color_choice')">
+                        <label for="cc_ffff00"></label>
+                        <input type="checkbox" class="color_choice c00ff00" id="cc_00ff00" value="0, 255, 0" onclick="check('color_choice')">
+                        <label for="cc_00ff00"></label>
+                        <input type="checkbox" class="color_choice c32adff" id="cc_32adff" value="50, 173, 255" onclick="check('color_choice')">
+                        <label for="cc_32adff"></label>
+                        <input type="checkbox" class="color_choice c0026ff" id="cc_0026ff" value="0, 38, 255" onclick="check('color_choice')">
+                        <label for="cc_0026ff"></label>
+                        <input type="checkbox" class="color_choice c9400d3" id="cc_9400d3" value="148, 0, 211" onclick="check('color_choice')">
+                        <label for="cc_9400d3"></label>
+                        <input type="checkbox" class="color_choice cd9d9d9" id="cc_d9d9d9" value="217, 217, 217" onclick="check('color_choice')" checked>
+                        <label for="cc_d9d9d9"></label>
+                        <input type="checkbox" class="color_choice c262626" id="cc_262626" value="38, 38, 38" onclick="check('color_choice')">
+                        <label for="cc_262626"></label>
+                        <input type="checkbox" class="color_choice c800000" id="cc_800000" value="128, 0, 0" onclick="check('color_choice')">
+                        <label for="cc_800000"></label>
+                        <input type="checkbox" class="color_choice c804000" id="cc_804000" value="128, 64, 0" onclick="check('color_choice')">
+                        <label for="cc_804000"></label>
+                        <input type="checkbox" class="color_choice c808000" id="cc_808000" value="128, 128, 0" onclick="check('color_choice')">
+                        <label for="cc_808000"></label>
+                        <input type="checkbox" class="color_choice c008000" id="cc_008000" value="0, 128, 0" onclick="check('color_choice')">
+                        <label for="cc_008000"></label>
+                        <input type="checkbox" class="color_choice c006bb3" id="cc_006bb3" value="0, 107, 179" onclick="check('color_choice')">
+                        <label for="cc_006bb3"></label>
+                        <input type="checkbox" class="color_choice c001380" id="cc_001380" value="0, 19, 128" onclick="check('color_choice')">
+                        <label for="cc_001380"></label>
+                        <input type="checkbox" class="color_choice c36004d" id="cc_36004d" value="54, 0, 77" onclick="check('color_choice')">
+                        <label for="cc_36004d"></label>
+                        <input type="checkbox" class="color_choice cb3b3b3" id="cc_b3b3b3" value="179, 179, 179" onclick="check('color_choice')">
+                        <label for="cc_b3b3b3"></label>
+                        <input type="checkbox" class="color_choice c000000" id="cc_000000" value="0, 0, 0" onclick="check('color_choice')">
+                        <label for="cc_000000"></label>
+                    </div>
+                    <span class="tooltiptext">Выбор возможных цветов фрагментов</label>
+                </div>
+                <div class="tooltip tt_cchoser">
+                    <div style="display: inline-block;">
+                        <input type="checkbox" class="bg_choice cff8080" id="bg_ff8080" value="255, 128, 128" onclick="check('bg_choice')">
+                        <label for="bg_ff8080"></label>
+                        <input type="checkbox" class="bg_choice cffbf80" id="bg_ffbf80" value="255, 191, 128" onclick="check('bg_choice')">
+                        <label for="bg_ffbf80"></label>
+                        <input type="checkbox" class="bg_choice cffff80" id="bg_ffff80" value="255, 255, 128" onclick="check('bg_choice')">
+                        <label for="bg_ffff80"></label>
+                        <input type="checkbox" class="bg_choice c80ff80" id="bg_80ff80" value="128, 255, 128" onclick="check('bg_choice')">
+                        <label for="bg_80ff80"></label>
+                        <input type="checkbox" class="bg_choice cb3e0ff" id="bg_b3e0ff" value="179, 224, 255" onclick="check('bg_choice')">
+                        <label for="bg_b3e0ff"></label>
+                        <input type="checkbox" class="bg_choice c8093ff" id="bg_8093ff" value="128, 147, 255" onclick="check('bg_choice')">
+                        <label for="bg_8093ff"></label>
+                        <input type="checkbox" class="bg_choice cc94dff" id="bg_c94dff" value="201, 77, 255" onclick="check('bg_choice')">
+                        <label for="bg_c94dff"></label>
+                        <input type="checkbox" class="bg_choice cffffff" id="bg_ffffff" value="255, 255, 255" onclick="check('bg_choice')">
+                        <label for="bg_ffffff"></label>
+                        <input type="checkbox" class="bg_choice c4d4d4d" id="bg_4d4d4d" value="77, 77, 77" onclick="check('bg_choice')">
+                        <label for="bg_4d4d4d"></label>
+                        <input type="checkbox" class="bg_choice cff0000" id="bg_ff0000" value="255, 0, 0" onclick="check('bg_choice')">
+                        <label for="bg_ff0000"></label>
+                        <input type="checkbox" class="bg_choice cff7f00" id="bg_ff7f00" value="255, 127, 0" onclick="check('bg_choice')">
+                        <label for="bg_ff7f00"></label>
+                        <input type="checkbox" class="bg_choice cffff00" id="bg_ffff00" value="255, 255, 0" onclick="check('bg_choice')">
+                        <label for="bg_ffff00"></label>
+                        <input type="checkbox" class="bg_choice c00ff00" id="bg_00ff00" value="0, 255, 0" onclick="check('bg_choice')">
+                        <label for="bg_00ff00"></label>
+                        <input type="checkbox" class="bg_choice c32adff" id="bg_32adff" value="50, 173, 255" onclick="check('bg_choice')">
+                        <label for="bg_32adff"></label>
+                        <input type="checkbox" class="bg_choice c0026ff" id="bg_0026ff" value="0, 38, 255" onclick="check('bg_choice')">
+                        <label for="bg_0026ff"></label>
+                        <input type="checkbox" class="bg_choice c9400d3" id="bg_9400d3" value="148, 0, 211" onclick="check('bg_choice')">
+                        <label for="bg_9400d3"></label>
+                        <input type="checkbox" class="bg_choice cd9d9d9" id="bg_d9d9d9" value="217, 217, 217" onclick="check('bg_choice')">
+                        <label for="bg_d9d9d9"></label>
+                        <input type="checkbox" class="bg_choice c262626" id="bg_262626" value="38, 38, 38" onclick="check('bg_choice')" checked>
+                        <label for="bg_262626"></label>
+                        <input type="checkbox" class="bg_choice c800000" id="bg_800000" value="128, 0, 0" onclick="check('bg_choice')">
+                        <label for="bg_800000"></label>
+                        <input type="checkbox" class="bg_choice c804000" id="bg_804000" value="128, 64, 0" onclick="check('bg_choice')">
+                        <label for="bg_804000"></label>
+                        <input type="checkbox" class="bg_choice c808000" id="bg_808000" value="128, 128, 0" onclick="check('bg_choice')">
+                        <label for="bg_808000"></label>
+                        <input type="checkbox" class="bg_choice c008000" id="bg_008000" value="0, 128, 0" onclick="check('bg_choice')">
+                        <label for="bg_008000"></label>
+                        <input type="checkbox" class="bg_choice c006bb3" id="bg_006bb3" value="0, 107, 179" onclick="check('bg_choice')">
+                        <label for="bg_006bb3"></label>
+                        <input type="checkbox" class="bg_choice c001380" id="bg_001380" value="0, 19, 128" onclick="check('bg_choice')">
+                        <label for="bg_001380"></label>
+                        <input type="checkbox" class="bg_choice c36004d" id="bg_36004d" value="54, 0, 77" onclick="check('bg_choice')">
+                        <label for="bg_36004d"></label>
+                        <input type="checkbox" class="bg_choice cb3b3b3" id="bg_b3b3b3" value="179, 179, 179" onclick="check('bg_choice')">
+                        <label for="bg_b3b3b3"></label>
+                        <input type="checkbox" class="bg_choice c000000" id="bg_000000" value="0, 0, 0" onclick="check('bg_choice')" checked>
+                        <label for="bg_000000"></label>
+                        </div>
+                        <span class="tooltiptext">Выбор возможных цветов фона</span>
+                </div>
+                <div class="small-blocks">
+                    <div>
+                        <div class="tooltip tt_shapes">
+                            <input type="checkbox" class="shapes sq" id="square" onclick="check('shapes')" checked />
+                            <label for="square"></label>
+                            <input type="checkbox" class="shapes rt" id="rectangle" onclick="check('shapes')" />
+                            <label for="rectangle"></label>
+                            <input type="checkbox" class="shapes ov" id="oval" onclick="check('shapes')" />
+                            <label for="oval"></label>
+                            <input type="checkbox" class="shapes rn" id="round" onclick="check('shapes')" checked />
+                            <label for="round"></label>
+                            <span class="tooltiptext">Выбор возможных форм фрагментов</span>
+                        </div>
+                        <div class="tooltip tt_shadowing">
+                            <input type="checkbox" class="shadowing sh" name="shadowing" id="shadow" onclick="check('shadowing')"/>
+                            <label for="shadow"></label>
+                            <input type="checkbox" class="shadowing gl" name="shadowing" id="glow" onclick="check('shadowing')" checked/>   
+                            <label for="glow"></label>
+                            <input type="checkbox" class="shadowing nn" name="shadowing" id="none" onclick="check('shadowing')" />
+                            <label for="none"></label>
+                            <span class="tooltiptext">Выбор того, что фрагменты смогут отбрасывать</span>
+                        </div>
+                    </div>
+                    <div class="tooltip tt_fullscreen">
+                        <div onclick="fullscreenonoff(this)" class="fullscreenoff"></div>
+                        <span class="tooltiptext"> Переключение полноэкранного режима</span>
+                    </div>
+                </div>
+            </div>
+            <div class="text-panel">
+                <h1>Бесконечный супрематический тайм-лапс</h1>
+                <p>Мясин Владимир Алексеевич</p>
+                <p>
+                    <a href="https://www.instagram.com/masvalkes/" target="_blank">Инстаграм</a>
+                    <a href="https://vk.com/msnvldmrlksvch" target="_blank">ВКонтакте</a>
+                    <a href="https://www.behance.net/loosersusa9880" target="_blank">Бёханс</a>
+                </p>
+                <p class="banks">Сбербанк 4276 3900 1500 2268</p>
+                <p class="banks">Тинькофф 5536 9138 6547 4726</p>
+            </div>
+        </div>
+        <div class="tooltip down" onclick="downFunction()">
+            <span class="tooltiptext ttt_down">Увидеть результат</span>
+        </div>
+        <div id="container"  onclick="topFunction()">
+            <div id="note">
+                Нажмите где угодно, чтобы подняться наверх
+            </div>
+            <div class="block"></div>
+            <div class="block"></div>
+            <div class="block"></div>
+            <div class="block"></div>
+            <div class="block"></div>
+            <div class="block"></div>
+            <div class="block"></div>
+            <div class="block"></div>
+            <div class="block"></div>
+            <div class="block"></div>
+        </div>
+    </body>
+</html>
